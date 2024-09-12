@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  max-width: None;
+}
+
+.container{
+  position: relative;
+  width: 500px;
+  left: 53%;
+  top: 30.5%;
+}
+
+.login_box{
+  position: relative;
+  height: 300px;
+  width: 500px;
+
+  background-color: #d9d9d96e;
+  border-radius: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+.background-playground{
+  height: 40rem;
+  width: 40rem;
+}
+
+.login_input{
+  font-family: "Laila", serif;
+  width: 50%;
+  background: transparent;
+  background-color: None;
+  text-align: center;
+  font-size: 30px;
+  border-bottom: 1px solid;
+}
+
+.login_input::placeholder {
+  color: rgb(101, 101, 101);
+  opacity: 1; /* Firefox */
+}
+
+/* CSS */
+.button-48 {
+  appearance: none;
+  font-family: "Laila", serif;
+  /*background-color: #FFFFFF;*/
+  border-width: 0;
+  background-color: #A4EBFF;
+  box-sizing: border-box;
+  border: 1px solid black;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1em;
+  margin: 0;
+  opacity: 1;
+  outline: 0;
+  padding: 1.5em 2.2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: geometricprecision;
+  text-transform: uppercase;
+  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+  user-select: none;
+  border-radius: 20px;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-48:before {
+  animation: opacityFallbackOut .5s step-end forwards;
+  backface-visibility: hidden;
+  background-color: #6bddfd;
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+  width: 100%;
+  border-radius: 20px;
+}
+
+.button-48:hover:before {
+  animation: opacityFallbackIn 0s step-start forwards;
+  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.button-48:after {
+  background-color: #FFFFFF;
+}
+
+.button-48 span {
+  z-index: 1;
+  position: relative;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

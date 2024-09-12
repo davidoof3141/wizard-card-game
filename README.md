@@ -1,1 +1,1 @@
-# wizard-card-game
+# Wizard 
