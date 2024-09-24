@@ -9,7 +9,7 @@ function Home() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log(JSON.stringify({ username, room }));
+      //console.log(JSON.stringify({ username, room }));
       const response = await fetch("http://localhost:8000/checkin/", {
         method: "POST",
         headers: {
@@ -20,8 +20,8 @@ function Home() {
 
       if (response.ok) {
         const lobbyId = await response.json();
-        console.log(lobbyId);
-        navigate(`/lobby/${lobbyId}`);
+        //console.log(lobbyId);
+        navigate(`/lobby/${lobbyId}`, { state: { username } });
       } else {
         console.error("Failed to create lobby");
       }

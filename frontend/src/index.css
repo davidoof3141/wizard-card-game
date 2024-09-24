@@ -37,8 +37,40 @@ html{
 }
 
 .background-playground{
-  height: 40rem;
-  width: 40rem;
+  height: 35rem;
+  width: 35rem;
+  border-radius: 50%;
+}
+
+.hcard {
+  width: 60px;  /* Card width */
+  height: 75px; /* Card height */
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.handcard{
+  width: 120px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid black;
+  box-shadow: 3px 1px 3px 3px #222222;
+  border-radius: 5px;
+}
+
+.handcard1{
+  margin-left: -90px;
+}
+
+.hcard-overlap{
+  margin-left: -45px;
+}
+
+.hand{
+  padding-left: 90px;
 }
 
 .login_input{
@@ -121,6 +153,8 @@ html{
 }
 
 
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -132,4 +166,264 @@ html{
   button {
     background-color: #f9f9f9;
   }
+}
+
+.option_window{
+  width: 300px;
+  height: 300px;
+  background-color: #cacacaba;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ready_button{
+  background-color: #a7811b;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+/* card images */
+
+.card-WW{
+  background-image: url('./assets/game/wizard.jpg');
+}
+
+.card-JJ{
+  background-image: url('./assets/game/jester.jpg');
+}
+
+.card-c2{
+  background-image: url('./assets/game/Playing_card_club_2.svg');
+}
+
+.card-c3{
+  background-image: url('./assets/game/Playing_card_club_3.svg');
+}
+
+.card-c4{
+  background-image: url('./assets/game/Playing_card_club_4.svg');
+}
+
+.card-c5{
+  background-image: url('./assets/game/Playing_card_club_5.svg');
+}
+
+.card-c6{
+  background-image: url('./assets/game/Playing_card_club_6.svg');
+}
+
+.card-c7{
+  background-image: url('./assets/game/Playing_card_club_7.svg');
+}
+
+.card-c8{
+  background-image: url('./assets/game/Playing_card_club_8.svg');
+}
+
+.card-c9{
+  background-image: url('./assets/game/Playing_card_club_9.svg');
+}
+
+.card-c10{
+  background-image: url('./assets/game/Playing_card_club_10.svg');
+}
+
+.card-c14{
+  background-image: url('./assets/game/Playing_card_club_A.svg');
+}
+
+.card-c11{
+  background-image: url('./assets/game/Playing_card_club_J.svg');
+}
+
+.card-c13{
+  background-image: url('./assets/game/Playing_card_club_K.svg');
+}
+
+.card-c12{
+  background-image: url('./assets/game/Playing_card_club_Q.svg');
+}
+
+.card-d2{
+  background-image: url('./assets/game/Playing_card_diamond_2.svg');
+}
+
+.card-d3{
+  background-image: url('./assets/game/Playing_card_diamond_3.svg');
+}
+
+.card-d4{
+  background-image: url('./assets/game/Playing_card_diamond_4.svg');
+}
+
+.card-d5{
+  background-image: url('./assets/game/Playing_card_diamond_5.svg');
+}
+
+.card-d6{
+  background-image: url('./assets/game/Playing_card_diamond_6.svg');
+}
+
+.card-d7{
+  background-image: url('./assets/game/Playing_card_diamond_7.svg');
+}
+
+.card-d8{
+  background-image: url('./assets/game/Playing_card_diamond_8.svg');
+}
+
+.card-d9{
+  background-image: url('./assets/game/Playing_card_diamond_9.svg');
+}
+
+.card-d10{
+  background-image: url('./assets/game/Playing_card_diamond_10.svg');
+}
+
+.card-d14{
+  background-image: url('./assets/game/Playing_card_diamond_A.svg');
+}
+
+.card-d11{
+  background-image: url('./assets/game/Playing_card_diamond_J.svg');
+}
+
+.card-d13{
+  background-image: url('./assets/game/Playing_card_diamond_K.svg');
+}
+
+.card-d12{
+  background-image: url('./assets/game/Playing_card_diamond_Q.svg');
+}
+
+.card-h2{
+  background-image: url('./assets/game/Playing_card_heart_2.svg');
+}
+
+.card-h3{
+  background-image: url('./assets/game/Playing_card_heart_3.svg');
+}
+
+.card-h4{
+  background-image: url('./assets/game/Playing_card_heart_4.svg');
+}
+
+.card-h5{
+  background-image: url('./assets/game/Playing_card_heart_5.svg');
+}
+
+.card-h6{
+  background-image: url('./assets/game/Playing_card_heart_6.svg');
+}
+
+.card-h7{
+  background-image: url('./assets/game/Playing_card_heart_7.svg');
+}
+
+.card-h8{
+  background-image: url('./assets/game/Playing_card_heart_8.svg');
+}
+
+.card-h9{
+  background-image: url('./assets/game/Playing_card_heart_9.svg');
+}
+
+.card-h10{
+  background-image: url('./assets/game/Playing_card_heart_10.svg');
+}
+
+.card-h14{
+  background-image: url('./assets/game/Playing_card_heart_A.svg');
+}
+
+.card-h11{
+  background-image: url('./assets/game/Playing_card_heart_J.svg');
+}
+
+.card-h13{
+  background-image: url('./assets/game/Playing_card_heart_K.svg');
+}
+
+.card-h12{
+  background-image: url('./assets/game/Playing_card_heart_Q.svg');
+}
+
+.card-s2{
+  background-image: url('./assets/game/Playing_card_spade_2.svg');
+}
+
+.card-s3{
+  background-image: url('./assets/game/Playing_card_spade_3.svg');
+}
+
+.card-s4{
+  background-image: url('./assets/game/Playing_card_spade_4.svg');
+}
+
+.card-s5{
+  background-image: url('./assets/game/Playing_card_spade_5.svg');
+}
+
+.card-s6{
+  background-image: url('./assets/game/Playing_card_spade_6.svg');
+}
+
+.card-s7{
+  background-image: url('./assets/game/Playing_card_spade_7.svg');
+}
+
+.card-s8{
+  background-image: url('./assets/game/Playing_card_spade_8.svg');
+}
+
+.card-s9{
+  background-image: url('./assets/game/Playing_card_spade_9.svg');
+}
+
+.card-s10{
+  background-image: url('./assets/game/Playing_card_spade_10.svg');
+}
+
+.card-s14{
+  background-image: url('./assets/game/Playing_card_spade_A.svg');
+}
+
+.card-s11{
+  background-image: url('./assets/game/Playing_card_spade_J.svg');
+}
+
+.card-s13{
+  background-image: url('./assets/game/Playing_card_spade_K.svg');
+}
+
+.card-s12{
+  background-image: url('./assets/game/Playing_card_spade_Q.svg');
+}
+
+.trump_card{
+  position: absolute;
+  left: 0%;
+}
+
+.card-HH{
+  background-image: url('./assets/game/playing-card-back.jpg');
+}
+
+.highlight_name{
+  border: 4px solid rgb(0, 170, 255);
+}
+
+.guess_button{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
 }
