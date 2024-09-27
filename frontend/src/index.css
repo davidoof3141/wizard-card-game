@@ -59,6 +59,12 @@ html{
   border: 1px solid black;
   box-shadow: 3px 1px 3px 3px #222222;
   border-radius: 5px;
+  
+}
+
+.disabled{
+  filter: brightness(50%);
+  z-index: 0;
 }
 
 .handcard1{
@@ -305,55 +311,55 @@ html{
 }
 
 .card-h2{
-  background-image: url('./assets/game/Playing_card_heart_2.svg');
+  background-image: url('./assets/game/g1.png');
 }
 
 .card-h3{
-  background-image: url('./assets/game/Playing_card_heart_3.svg');
+  background-image: url('./assets/game/g2.png');
 }
 
 .card-h4{
-  background-image: url('./assets/game/Playing_card_heart_4.svg');
+  background-image: url('./assets/game/g3.png');
 }
 
 .card-h5{
-  background-image: url('./assets/game/Playing_card_heart_5.svg');
+  background-image: url('./assets/game/g4.png');
 }
 
 .card-h6{
-  background-image: url('./assets/game/Playing_card_heart_6.svg');
+  background-image: url('./assets/game/g5.png');
 }
 
 .card-h7{
-  background-image: url('./assets/game/Playing_card_heart_7.svg');
+  background-image: url('./assets/game/g6.png');
 }
 
 .card-h8{
-  background-image: url('./assets/game/Playing_card_heart_8.svg');
+  background-image: url('./assets/game/g7.png');
 }
 
 .card-h9{
-  background-image: url('./assets/game/Playing_card_heart_9.svg');
+  background-image: url('./assets/game/g8.png');
 }
 
 .card-h10{
-  background-image: url('./assets/game/Playing_card_heart_10.svg');
+  background-image: url('./assets/game/g9.png');
 }
 
 .card-h14{
-  background-image: url('./assets/game/Playing_card_heart_A.svg');
+  background-image: url('./assets/game/g13.png');
 }
 
 .card-h11{
-  background-image: url('./assets/game/Playing_card_heart_J.svg');
+  background-image: url('./assets/game/g10.png');
 }
 
 .card-h13{
-  background-image: url('./assets/game/Playing_card_heart_K.svg');
+  background-image: url('./assets/game/g12.png');
 }
 
 .card-h12{
-  background-image: url('./assets/game/Playing_card_heart_Q.svg');
+  background-image: url('./assets/game/g11.png');
 }
 
 .card-s2{
@@ -427,3 +433,12 @@ html{
   border-radius: 5px;
   margin: 5px;
 }
+
+.disabled_guess_button{
+  background-color: gray;
+}
+
+.disabled_guess_button:hover{
+  cursor: not-allowed;
+}
+

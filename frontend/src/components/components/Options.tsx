@@ -48,7 +48,10 @@ function Options(props: {
               <button
                 key={index}
                 onClick={() => takeGuess(index)}
-                className="guess_button"
+                className={`guess_button ${
+                  gameState.fguess === index ? "disabled_guess_button" : ""
+                }`} // Add conditional class if fguess === index
+                disabled={gameState.fguess === index} // Disable the button if fguess matches the index
               >
                 {index}
               </button>

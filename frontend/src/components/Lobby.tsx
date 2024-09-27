@@ -14,6 +14,7 @@ export interface PlayerClass {
   sguess: number;
   played?: string[];
   cards?: string[];
+  playable: boolean[];
   score: number;
 }
 
@@ -23,6 +24,7 @@ export interface GameStateClass {
   trump: string[];
   state: number;
   turn: number;
+  fguess: number;
 }
 
 // Function to get or create a persistent client ID

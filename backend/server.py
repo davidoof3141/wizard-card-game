@@ -52,7 +52,7 @@ async def websocket_endpoint(websocket: WebSocket, game_id: str):
     user_id = websocket.query_params.get("userID")
     connected_players[user_id] = websocket
     messageHandler = MessageHandler()
-    
+    print("connected")
     try:
         while True:
             data = await websocket.receive_text()
@@ -61,11 +61,13 @@ async def websocket_endpoint(websocket: WebSocket, game_id: str):
             await messageHandler.handle_incoming_message(wizard, data, websocket)
     except WebSocketDisconnect:
         wizard = game_map[game_id]
-        await messageHandler.handle_disconnect(wizard, user_id)
         print("Client disconnected")
-    except KeyError:
-        redirect_msg = json.dumps({"status": 504})
-        await websocket.send_text(redirect_msg)
+        await messageHandler.handle_disconnect(wizard, user_id)
+        
+    #except KeyError as e:
+    #    print(e)
+    #    redirect_msg = json.dumps({"status": 504})
+    #    await websocket.send_text(redirect_msg)
 
 class MessageHandler:
     async def handle_incoming_message(self, wizard: Wizard, data, websocket):
@@ -96,7 +98,7 @@ class MessageHandler:
         #print(json.dumps(wizard.game_state()))
         for player in wizard.players:
             payload = wizard.game_state(player)
-            print(payload)
+            #print(payload)
             json_data = json.dumps({"status": 200, "payload": payload})
             await player.websocket.send_text(json_data)
             

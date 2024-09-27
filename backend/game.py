@@ -13,12 +13,13 @@ class Player:
         self.guess = -1
         self.success_guess = 0
         self.played_card = None
+        self.playable = []
         
     def set_leader(self):
         self.leader = True
         
     def get_state(self):
-        return {"id": self.player_id, "name": self.name, "cards": self.cards, "score": self.score, "guess": self.guess, "sguess": self.success_guess, "played": self.played_card}
+        return {"id": self.player_id, "name": self.name, "cards": self.cards, "score": self.score, "guess": self.guess, "sguess": self.success_guess, "played": self.played_card, "playable": self.playable}
     
     def get_hidden_state(self):
         hidden_cards = [["H", "H"] for card in self.cards]
@@ -53,12 +54,15 @@ class Wizard:
         self.turn = None
         self.game_index = -1
         self.round_index = -1
+        self.forbidden_guess = -1
+        self.total_guess = 0
         
         self.current_turn = None
         self.deck = Deck()
         self.trump = None
         self.played_stack = {} # round_index: card
         self.highest_card_index = -1
+        self.force_card = None
         
     def start_game(self):
         self.state = 1
@@ -68,7 +72,14 @@ class Wizard:
     
     def take_guess(self, data):
         if data["id"] == self.players[self.round_index].id:
+            if data["guess"] == self.forbidden_guess:
+                return False
+            next_round_index = (self.round_index + 2) % len(self.players)
             self.players[self.round_index].guess = data["guess"]
+            self.total_guess += data["guess"]
+            if self.players[next_round_index].guess != -1:
+                # if last guess calculate forbidden guess   
+                self.forbidden_guess = self.round - self.total_guess
             self.round_index = (self.round_index + 1) % len(self.players)
             if self.players[self.round_index].guess != -1:
                 #self.round_index = self.game_index
@@ -76,12 +87,21 @@ class Wizard:
             return True
     
     def play_card(self, data):
+        if self.state != 4:
+            return False
         if data["id"] == self.players[self.round_index].id:
             player = self.players[self.round_index]
             card = parse_card(data["played"])
             player.played_card = card
             player.cards.remove(card)
             self.played_stack[self.round_index] = card
+            if not self.force_card and card[0] != "J":
+                self.force_card = card
+                for player in self.players:
+                    if card[1] == "W" or not any(card[1] == t[1] for t in player.cards):
+                        player.playable = [1 for card in player.cards]
+                    else:
+                        player.playable = [1 if card[1] in ["J", "W", self.force_card[1]] else 0 for card in player.cards]
             if len(self.played_stack) == 1:
                 self.highest_card_index = self.round_index
             else:
@@ -103,7 +123,9 @@ class Wizard:
         self.players[self.highest_card_index].success_guess += 1
         self.round_index = self.highest_card_index
         self.played_stack = {}
+        self.force_card = None
         for player in self.players:
+            player.playable = []
             player.played_card = None
             
     def calculate_score(self):
@@ -118,6 +140,8 @@ class Wizard:
         for player in self.players:
             player.guess = -1
             player.success_guess = 0
+        self.total_guess = 0
+        self.forbidden_guess = -1
         self.next_round()
     
     def next_round(self):
@@ -131,6 +155,7 @@ class Wizard:
         for player in self.players:
             for _ in range(self.round):
                 player.cards.append(self.deck.deal())
+            player.cards.sort(key=custom_sort_card)
         
     def join_game(self, player: Player):
         if not any(playerx.id == player.id for playerx in self.players):
@@ -142,7 +167,6 @@ class Wizard:
             return self.players
         
     def leave_game(self, user_id):
-        print(user_id)
         for i, player in enumerate(self.players):
             if player.id == user_id:
                 self.players.pop(i)
@@ -156,7 +180,8 @@ class Wizard:
             "state": self.state,
             "players": players,
             "round": self.round,
-            "trump": self.trump
+            "trump": self.trump,
+            "fguess": self.forbidden_guess
         }
         if self.state in [3,4]:
             game_state["turn"] = self.players[self.round_index].player_id
@@ -171,6 +196,8 @@ def compare_cards(card: tuple, card_comparison: tuple, trump: tuple):
     # if compare card is trump
     if card_comparison[0] == "W":
         return False
+    if card[0] == "W":
+        return True
     if card_comparison[0] == "J":
         if card[0] == "J":
             return False
@@ -190,5 +217,21 @@ def compare_cards(card: tuple, card_comparison: tuple, trump: tuple):
             return False
 
 
-    
-    
+def custom_sort_card(card):
+    # Check if the card is ('J', 'J'), give it the highest priority (-1)
+    if card == ('J', 'J'):
+        return (0, -1)
+    elif card == ('W', 'W'):
+        return (5, 14)
+    elif card[1] == 's':
+        return (1, int(card[0]))
+    elif card[1] == 'c':
+        return (2, int(card[0])) 
+    elif card[1] == 'd':
+        return (3, int(card[0])) 
+    elif card[1] == 'h':
+        return (4, int(card[0])) 
+
+    # Otherwise, sort by the color and the number
+
+    return (card[1], int(card[0]))

@@ -15,7 +15,7 @@ function Player(props: {
       >
         {player?.played && (
           <Card
-            key="player.played[1]"
+            key={`${Math.random()}`}
             card={`${player.played[1]}${player.played[0]}`}
             xclass="handcard absolute"
             custom_style={{
@@ -35,7 +35,7 @@ function Player(props: {
         <div className="flex justify-center w-[7rem] h-[5.5rem] relative mt-[5px] pl-[45px]">
           {player.cards?.map((card, index) => (
             <Card
-              key={card[0]}
+              key={`${Math.random()}`}
               card={`${card[1]}${card[0]}`}
               xclass="hcard hcard-overlap"
             />
